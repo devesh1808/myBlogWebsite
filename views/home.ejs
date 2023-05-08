@@ -1,0 +1,21 @@
+<%- include("partials/header"); %>
+<h1>Home</h1>
+<p><%= homeStartEle %></p>
+<h1>My Blogs</h1>
+
+<% newPostsArr.forEach(function(post){ %>
+    <div class="container" style="border: 5px solid black; margin: 10px; margin-left: auto; margin-bottom: 20px;">
+        <h2><%= post.title %></h2>
+     <p>
+        <%= post.content.substring(0, 100) + " ..." %>
+        <a href="/posts/<%=post.title%>">Read More</a>
+        <form action="/delete" method="post">
+            <button type="submit" name="buttonEle" value="<%= post._id %>" onChange="this.form.submit()">
+                Delete Post
+            </button>
+        </form>
+    </p>
+    </div>
+<% }) %>
+
+<%- include("partials/footer"); %>
